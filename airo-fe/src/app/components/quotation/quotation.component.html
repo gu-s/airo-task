@@ -1,0 +1,52 @@
+<div class="auth-wrapper mt-100">
+    <form class="form-signin" [formGroup]="quotationForm" (ngSubmit)="onSubmit()">
+        <h3 class="h3 mb-3 font-weight-normal text-center">Quotation</h3>
+        <!-- Errors -->
+        <div *ngIf="errors?.age" class="alert alert-warning" role="alert">
+            {{ errors?.age }}
+        </div>
+        <div *ngIf="errors?.currency_id" class="alert alert-warning" role="alert">
+            {{ errors?.currency_id }}
+        </div>
+        <div *ngIf="errors?.start_date" class="alert alert-warning" role="alert">
+            {{ errors?.start_date }}
+        </div>
+        <div *ngIf="errors?.end_date" class="alert alert-warning" role="alert">
+            {{ errors?.end_date }}
+        </div>
+        <div *ngIf="errors?.error" class="alert alert-danger mt-3">
+            {{ errors?.error }}
+        </div>
+        <!-- quote form -->
+        <div class="form-group">
+            <label>ages</label>
+            <input type="text" class="form-control" formControlName="age">
+        </div>
+        <div class="form-group">
+            <label>Currency</label>
+            <input type="text" class="form-control" formControlName="currency_id">
+        </div>
+        <div class="form-group">
+            <label>Start date</label>
+            <input type="text" class="form-control" formControlName="start_date">
+        </div>
+        <div class="form-group">
+            <label>End date</label>
+            <input type="text" class="form-control" formControlName="end_date">
+        </div>
+        <button type="submit" class="btn btn-block btn-primary">get Quotation</button>
+    </form>
+  </div>
+
+  <div class="row mt-2" *ngIf="showQuotation">
+    <div class="card inner-main">
+      <div class="card-header">
+        Quotation
+      </div>
+      <div class="card-body">
+        <p class="card-text">total: <strong>{{quotation?.total}}</strong></p>
+        <p class="card-text">quotation id: <strong>{{quotation?.quotation_id}}</strong></p>
+        <p class="card-text">currency: <strong>{{quotation?.currency_id}}</strong></p>
+      </div>
+    </div>
+  </div>
